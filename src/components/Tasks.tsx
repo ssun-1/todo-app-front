@@ -33,7 +33,7 @@ export const Tasks = ({ tasks }) => {
         .then((res) => {
             if (res.ok) {
                 message.success('Task deleted successfully!');
-                setCurTasks(fetchTasks());
+                fetchTasks(); // Call fetchTasks without setting it to curTasks
             } else {
                 message.error('Failed to delete task');
             }
@@ -77,7 +77,7 @@ export const Tasks = ({ tasks }) => {
                 align: 'center'
             }}
             dataSource={curTasks}
-            renderItem={(item) => (
+            renderItem={(item: TaskType) => (
                 <List.Item
                     key={item.todo_id}
                     actions={[
